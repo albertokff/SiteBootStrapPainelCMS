@@ -1,0 +1,26 @@
+version: "3.7"
+services:
+  php:
+    build:
+      context: .
+    image: php:7.4-apache
+    container_name: painelCMS
+    ports:
+      - "80:80"
+    volumes:
+      - ".:/var/www/html/"
+    links:
+      - bdpainelcms
+    
+  bdpainelcms:
+    image: postgres:15.4
+    restart: always
+    container_name: bdpainelcms
+    ports:
+      - "5432:5432"
+    volumes:
+      - /var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "123456"  
+volumes:
+  postgresql-data:

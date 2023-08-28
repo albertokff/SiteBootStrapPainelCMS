@@ -1,0 +1,11 @@
+version: "3.7" 
+services:	  
+  php:
+    build:
+      context: .
+    image: php:7.4-apache
+    container_name: projetoBootstrap
+    ports:
+      - "90:80"
+    volumes:
+      - ".:/var/www/html/"
